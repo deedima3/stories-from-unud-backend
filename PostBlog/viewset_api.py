@@ -26,10 +26,10 @@ def PostBlogSetView(request, format=None):
     else:
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-@api_view(['POST'])
+@api_view(['GET'])
 def PostBlogOneItem(request, format=None):
-    if ('token' in request.POST):
-        token = request.POST['token']
+    if ('token' in request.GET):
+        token = request.GET['token']
         if (token == 'Ba72o5PX4vIH'):
             pass
         else:
@@ -37,7 +37,7 @@ def PostBlogOneItem(request, format=None):
 
         try:
             try:
-                HashNumber = int(request.POST['hashNumber'])
+                HashNumber = int(request.GET['HashNumber'])
             except:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             oneContent = BlogMainDatabase.objects.get(HashNumber=HashNumber)
