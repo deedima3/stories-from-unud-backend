@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'Home',
     'PostBlog',
+    'CreateNewPost',
+    'adminValidator',
 ]
 
 MIDDLEWARE = [

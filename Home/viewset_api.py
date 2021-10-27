@@ -10,29 +10,17 @@ from DATABASE.serializers import BlogSerializers
 @api_view(['GET'])
 def BlogHomeViewSetView(request, format=None):
     if request.method == 'GET':
+        if ('token' in request.GET):
+            token = request.GET['token']
+            if (token == 'Ba72o5PX4vIH'):
+                pass
+            else:
+                return Response(status=status.HTTP_403_FORBIDDEN)
+        else:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+
         blogs = BlogMainDatabase.objects.all()
         serializer = BlogSerializers(blogs, many=True)
         return Response(serializer.data)
-
-    elif request.method == 'POST':
-        serializer = BlogSerializers(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['GET', 'DELETE'])
-def BlogHomeOneItem(request, pk, format=None):
-    try:
-        oneContent = BlogMainDatabase.objects.get(id=pk)
-    except BlogMainDatabase.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'GET':
-        serializer = BlogSerializers(oneContent)
-        return Response(serializer.data)
-
-    elif request.method == 'DELETE':
-        oneContent.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    else:
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)

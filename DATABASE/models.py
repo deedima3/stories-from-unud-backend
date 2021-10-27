@@ -6,8 +6,9 @@ class BlogMainDatabase(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     imageHeader = models.CharField(max_length=255, blank=True, null=True)
     article = models.TextField()
-    dateCreated = models.DateField(auto_now_add=True)
+    dateTimeCreated = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     author = models.CharField(max_length=150)
+    visitor = models.IntegerField(default=0)
 
     def __str__(self):
         return "{}. {}".format(self.id, self.title)

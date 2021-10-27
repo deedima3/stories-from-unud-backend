@@ -3,40 +3,75 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from DATABASE.models import BlogMainDatabase
 from DATABASE.serializers import BlogSerializers
-from PostBlog.ultilites import hashfunction, cekLinearCollision
+from CreateNewPost import ultilites
 
 # Create your views here.
-@api_view(['GET', 'POST'])
-def BlogPostViewSetView(request):
-    if request.method == 'GET':
+
+
+@api_view(['GET'])
+def PostBlogSetView(request, format=None):
+    if (request.method == 'GET'):
+        if ('token' in request.GET):
+            token = request.GET['token']
+            if (token == 'Ba72o5PX4vIH'):
+                pass
+            else:
+                return Response(status=status.HTTP_403_FORBIDDEN)
+        else:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+
         blogs = BlogMainDatabase.objects.all()
         serializer = BlogSerializers(blogs, many=True)
         return Response(serializer.data)
+    else:
+        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-    elif request.method == 'POST':
-        print(request.data)
-
-        kataKunci = request.data['title']
-        keyHash = hashfunction(word=kataKunci)
-        hasil = cekLinearCollision(keyNumber=keyHash)
-
-        if (type(hasil) == int):
-            keyHashFinal = hasil
+@api_view(['POST'])
+def PostBlogOneItem(request, format=None):
+    if ('token' in request.POST):
+        token = request.POST['token']
+        if (token == 'Ba72o5PX4vIH'):
+            pass
         else:
-            serializerError = BlogSerializers(data=request.data)
-            serializerError.is_valid()
-            return Response(serializerError.errors, status=status.HTTP_400_BAD_REQUEST) # Penyimpanan sudah penuh
+            return Response(status=status.HTTP_403_FORBIDDEN)
 
-        newData = {
-            'HashNumber': keyHashFinal,
-            'title': request.data['title'],
-            'imageHeader': request.data['imageHeader'],
-            'article': request.data['article'],
-            'dateCreated': request.data['dateCreated'],
-            'author': request.data['author']
-        }
-        serializer = BlogSerializers(data=newData)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            try:
+                HashNumber = int(request.POST['hashNumber'])
+            except:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+            oneContent = BlogMainDatabase.objects.get(HashNumber=HashNumber)
+            serializer = BlogSerializers(oneContent)
+            return Response(serializer.data)
+        except BlogMainDatabase.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response(status=status.HTTP_403_FORBIDDEN)
+
+@api_view(['POST'])
+def SearchArticle(request):
+    if (request.method == 'POST'):
+        if ('token' in request.POST):
+            token = request.POST['token']
+            if (token == 'Ba72o5PX4vIH'):
+                pass
+            else:
+                return Response(status=status.HTTP_403_FORBIDDEN)
+        else:
+            return Response(status=status.HTTP_403_FORBIDDEN)
+
+        keyword = request.POST['keyword']
+        searchResult = False
+        hashResult = None
+        # Logic Search
+        # Logic Search
+        # Logic Search
+        # Logic Search
+
+        if (searchResult):
+            pass
+        else:
+            pass
+    serializer = BlogSerializers(data=request.data)
+    serializer.is_valid()
+    return Response(serializer.errors, status=status.HTTP_501_NOT_IMPLEMENTED)
