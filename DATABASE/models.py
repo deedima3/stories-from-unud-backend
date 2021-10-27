@@ -9,6 +9,7 @@ class BlogMainDatabase(models.Model):
     dateTimeCreated = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     author = models.CharField(max_length=150)
     visitor = models.IntegerField(default=0)
+    acceptByAdmin = models.BooleanField(default=False, blank=True, null=True)
 
     def __str__(self):
         return "{}. {}".format(self.id, self.title)

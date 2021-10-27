@@ -19,7 +19,7 @@ def BlogHomeViewSetView(request, format=None):
         else:
             return Response(status=status.HTTP_403_FORBIDDEN)
 
-        blogs = BlogMainDatabase.objects.all()
+        blogs = BlogMainDatabase.objects.filter(acceptByAdmin=True)
         serializer = BlogSerializers(blogs, many=True)
         return Response(serializer.data)
     else:
