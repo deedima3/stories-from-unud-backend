@@ -4,7 +4,6 @@ from django.db import models
 class BlogMainDatabase(models.Model):
     HashNumber = models.IntegerField(default=9999, blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
-    imageHeader = models.CharField(max_length=255, blank=True, null=True)
     article = models.TextField()
     dateTimeCreated = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     author = models.CharField(max_length=150)

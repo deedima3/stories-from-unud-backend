@@ -5,4 +5,4 @@ from DATABASE.models import BlogMainDatabase
 class BlogSerializers(serializers.ModelSerializer):
     class Meta:
         model = BlogMainDatabase
-        fields = ['HashNumber', 'title', 'imageHeader', 'article', 'dateTimeCreated', 'author', 'visitor']
+        fields = ['HashNumber', 'title', 'article', 'dateTimeCreated', 'author', 'visitor']

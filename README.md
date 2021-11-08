@@ -19,6 +19,7 @@ python manage.py runserver
 
 ## API Reference
 <h3 align="center">1. Get All Article</h3>
+<h4 align="center">URL : https://unud-blog.herokuapp.com/api/blog-post </h4>
 #### 
 
 ```http
@@ -58,6 +59,7 @@ python manage.py runserver
 
 #### 
 <h3 align="center">2. Get One Article</h3>
+<h4 align="center">URL : https://unud-blog.herokuapp.com/api/blog-post/one-item </h4>
 
 ```http
   [GET] /api/blog-post/one-item/
@@ -90,6 +92,7 @@ python manage.py runserver
 
 #### 
 <h3 align="center">3. Search Article</h3>
+<h4 align="center">URL : https://unud-blog.herokuapp.com/api/search </h4>
 
 ```http
   [POST] /api/search/
@@ -107,6 +110,7 @@ python manage.py runserver
 
 #### 
 <h3 align="center">4. Create New Article</h3>
+<h4 align="center">URL : https://unud-blog.herokuapp.com/api/create/article </h4>
 
 ```http
   [POST] /api/create/article/
@@ -116,7 +120,6 @@ python manage.py runserver
 | :-------- | :------- | :-------------------------------- |
 | `token`      | `string` | **Required** - Kode Akses |
 | `title`      | `string` | **Required** - Judul Artikel|
-| `imageHeader`| `img file` | **Required** - Gambar Header Artikel|
 | `article`    | `string` | **Required** - Isi Artikel |
 | `author`      | `string` | **Required** - Penulis Artikel|
 
@@ -125,9 +128,10 @@ python manage.py runserver
 
 #### 
 <h3 align="center">5. Admin Validator</h3>
+<h4 align="center">URL : https://unud-blog.herokuapp.com/api/adminValidator </h4>
 
 ```http
-  [GET/POST] /api/search/
+  [GET/POST] /api/adminValidator/
 ```
 
 | Multipart | Type     | Description                       |

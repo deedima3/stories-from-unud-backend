@@ -89,6 +89,18 @@ DATABASES = {
     }
 }
 
+# Heroku database postgresql, USE THIS FOR DEPLOY / DEMO PRODUCTION
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'jwhumlzatwyamg',
+#        'HOST': 'ec2-44-195-240-222.compute-1.amazonaws.com',
+#        'PORT': 5432,
+#        'USER': 'd14g3gjbi0sulr',
+#        'PASSWORD': '13545ff11728fcc2e239be9e98fc7bc4a8e75c0d073a22847ebbbd212009fc64',
+#    }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
