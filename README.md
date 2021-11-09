@@ -103,10 +103,8 @@ python manage.py runserver
 | `token`      | `string` | **Required** |
 | `keyword`      | `string` | **Required** |
 
-#### Json Response
-```javascript
-    NOT IMPLEMENTED, ON PROGRESS
-```
+#### Example
+![static/img_1.png](static/img_1.png)
 
 #### 
 <h3 align="center">4. Create New Article</h3>
@@ -124,7 +122,7 @@ python manage.py runserver
 | `author`      | `string` | **Required** - Penulis Artikel|
 
 #### Example
-![img.png](img.png)
+![img.png](static/img.png)
 
 #### 
 <h3 align="center">5. Admin Validator</h3>
