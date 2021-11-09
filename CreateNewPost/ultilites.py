@@ -15,7 +15,7 @@ def cekLinearCollision(keyNumber):
     newIndex = keyNumber
     while True:
         try:
-            BlogMainDatabase.objects.get(HashNumber=keyNumber)
+            BlogMainDatabase.objects.get(HashNumber=newIndex)
             newIndex += 1 # Terjadi Collision maka index naik/di-increment 1
         except:
             return newIndex # Jika Error berarti key tersebut tersedia dan return key (integer)
@@ -30,7 +30,7 @@ def cekSearchLinearCollision(keyword):
     newIndex = keyNumber
     while True:
         try:
-            data = BlogMainDatabase.objects.get(HashNumber=keyNumber)
+            data = BlogMainDatabase.objects.get(HashNumber=newIndex)
             if(data.title == keyword):
                 return data
             else:
