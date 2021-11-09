@@ -64,9 +64,9 @@ def SearchArticle(request):
         data = ultilites.cekSearchLinearCollision(keyword=keyword)
 
         if (data):
-            pass
+            serializer = BlogSerializers(data)
+            serializer.is_valid()
+            return Response(serializer.data)
         else:
-            pass
-    serializer = BlogSerializers(data=request.data)
-    serializer.is_valid()
-    return Response(serializer.errors, status=status.HTTP_501_NOT_IMPLEMENTED)
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    
