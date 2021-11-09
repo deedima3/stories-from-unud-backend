@@ -61,14 +61,9 @@ def SearchArticle(request):
             return Response(status=status.HTTP_403_FORBIDDEN)
 
         keyword = request.POST['keyword']
-        searchResult = False
-        hashResult = None
-        # Logic Search
-        # Logic Search
-        # Logic Search
-        # Logic Search
+        data = ultilites.cekSearchLinearCollision(keyword=keyword)
 
-        if (searchResult):
+        if (data):
             pass
         else:
             pass
