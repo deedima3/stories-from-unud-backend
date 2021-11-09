@@ -61,17 +61,12 @@ def SearchArticle(request):
             return Response(status=status.HTTP_403_FORBIDDEN)
 
         keyword = request.POST['keyword']
-        searchResult = False
-        hashResult = None
-        # Logic Search
-        # Logic Search
-        # Logic Search
-        # Logic Search
+        data = ultilites.cekSearchLinearCollision(keyword=keyword)
 
-        if (searchResult):
-            pass
+        if (data):
+            serializer = BlogSerializers(data)
+            serializer.is_valid()
+            return Response(serializer.data)
         else:
-            pass
-    serializer = BlogSerializers(data=request.data)
-    serializer.is_valid()
-    return Response(serializer.errors, status=status.HTTP_501_NOT_IMPLEMENTED)
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    

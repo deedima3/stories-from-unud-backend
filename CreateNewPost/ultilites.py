@@ -24,3 +24,21 @@ def cekLinearCollision(keyNumber):
             newIndex = 0
         if (newIndex == keyNumber):
             return "Sudah Penuh" # return string bahwa data penuh
+
+def cekSearchLinearCollision(keyword):
+    keyNumber = hashfunction(keyword)
+    newIndex = keyNumber
+    while True:
+        try:
+            data = BlogMainDatabase.objects.get(HashNumber=keyNumber)
+            if(data.title == keyword):
+                return data
+            else:
+                newIndex += 1  # Terjadi Collision maka index naik/di-increment 1
+        except:
+            return None # Jika Error berarti key tersebut tersedia dan return key (integer)
+
+        if (newIndex == 300):
+            newIndex = 0
+        if (newIndex == keyNumber):
+            return "Sudah Penuh" # re
