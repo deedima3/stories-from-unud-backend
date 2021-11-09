@@ -65,7 +65,6 @@ def SearchArticle(request):
 
         if (data):
             serializer = BlogSerializers(data)
-            serializer.is_valid()
             return Response(serializer.data)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
