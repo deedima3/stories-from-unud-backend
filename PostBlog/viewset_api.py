@@ -4,16 +4,20 @@ from rest_framework.response import Response
 from DATABASE.models import BlogMainDatabase
 from DATABASE.serializers import BlogSerializers
 from CreateNewPost import ultilites
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 
 # Create your views here.
 
 
 @api_view(['GET'])
 def PostBlogSetView(request, format=None):
+    print(request.headers['Token'])
     if (request.method == 'GET'):
-        if ('token' in request.GET):
-            token = request.GET['token']
-            if (token == 'Ba72o5PX4vIH'):
+        if ('token' in request.headers):
+            token = request.headers['Token']
+            result = authenticate(username='EndPointAccess', password=token)
+            if (result is not None):
                 pass
             else:
                 return Response(status=status.HTTP_403_FORBIDDEN)
