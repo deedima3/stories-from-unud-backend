@@ -8,19 +8,10 @@ import requests
 # Create your views here.
 @api_view(['POST'])
 def CreateNewSetView(request):
-    if request.method == 'POST':
-        if ('token' in request.POST):
-            token = request.POST['token']
-            if (token == 'Ba72o5PX4vIH'):
-                pass
-            else:
-                return Response(status=status.HTTP_403_FORBIDDEN)
-        else:
-            return Response(status=status.HTTP_403_FORBIDDEN)
-
+    if (str(request.method).lower() == 'post'):
         print(request.data)
 
-        kataKunci = request.data['title']
+        kataKunci = str(request.data['title']).lower()
         keyHash = hashfunction(word=kataKunci)
         hasil = cekLinearCollision(keyNumber=keyHash)
 
@@ -34,7 +25,7 @@ def CreateNewSetView(request):
 
         newData = {
             'HashNumber': keyHashFinal,
-            'title': request.data['title'],
+            'title': str(request.data['title']).lower(),
             'article': request.data['article'],
             'author': request.data['author']
         }

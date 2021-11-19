@@ -23,13 +23,12 @@ python manage.py runserver
 #### 
 
 ```http
-   [GET] /api/blog-post/
+   [POST] /api/blog-post/
 ```
 
 
-| Parameter | Type     | Description                |Default Value|
+| JSON Body | Type     | Description                |Default Value|
 | :-------- | :------- | :------------------------- |:------|
-| `token` | `string` | **Required**. |None|
 | `format`| `string` | **Optional**.  |api|
 
 #### Json Response
@@ -37,20 +36,26 @@ python manage.py runserver
 ```javascript
 [
   {
-    "HashNumber": 57,
-    "title": "Universitas Udayana",
-    "imageHeader": "https://i.ibb.co/2yCNvNX/Kampus-Unud.jpg",
-    "article": "Sejarah - Cikal bakal Universitas Udayana adalah Fakultas Sastra cabang Universitas Airlangga yang diresmikan oleh P. J. M. Presiden Republik Indonesia Ir. Soekarno, dibuka oleh J. M. Menteri P.P dan K. Prof. DR. Priyono pada tanggal 29 September 1958 sebagaimana tertulis pada Prasasti di Fakultas Sastra, Jalan Nias, Denpasar. Universitas Udayana secara sah berdiri pada tanggal 17 Agustus 1962 dan merupakan perguruan tinggi negeri tertua di daerah Provinsi Bali. Sebelumnya, sejak tanggal 29 September 1958 di Bali sudah berdiri sebuah fakultas yang bernama fakultas Sastra Udayana sebagai cabang dari Universitas Airlangga.\r\n\r\nFakultas Sastra Udayana inilah yang merupakan embrio daripada berdirinya Universitas Udayana. Berdasarkan Surat Keputusan Menteri PTIP No.104/1962, tanggal 9 Agustus 1962, Universitas Udayana secara sah berdiri sejak tanggal 17 Agustus 1962. Akan tetapi, karena hari lahir Universitas Udayana jatuh bersamaan dengan hari Proklamasi Kemerdekaan Republik Indonesia, maka perayaan hari ulang tahun Universitas Udayana dialihkan menjadi tanggal 29 September dengan mengambil tanggal peresmian fakultas sastra yang telah berdiri sejak tahun 1958.[8]",
-    "dateTimeCreated": "2021-10-27T02:37:55.134191Z",
+    "HashNumber": 59,
+    "title": "teknik udayana",
+    "article": "Fakultas Teknik Universitas Udayana secara resmi berdiri pada tanggal 1 Oktober 1965 dengan Surat Keputusan Menteri PTIP No. 248/Sek/P.U/1965, tanggal 20 Oktober 1965, yang terdiri dari dua jurusan yaitu Jurusan Arsitektur dan Jurusan Seni Rupa. Sebagai latar belakang pendirian Fakultas Teknik Universitas Udayana, adalah dalam rangka pelestarian, pengembangan kebudayaan Daerah Bali pada khususnya dan kebudayaan nasional pada umumnya, terutama di dalam menghadapi pembangunan dan perkembangan kepariwisataan.",
+    "dateTimeCreated": "2021-11-19T10:40:40.842714Z",
+    "author": "Jeremi",
+    "visitor": 0
+  },
+  {
+    "HashNumber": 205,
+    "title": "universitas udayana",
+    "article": "Sejarah - Cikal bakal Universitas Udayana adalah Fakultas Sastra cabang Universitas Airlangga yang diresmikan oleh P. J. M. Presiden Republik Indonesia Ir. Soekarno, dibuka oleh J. M. Menteri P.P dan K. Prof. DR. Priyono pada tanggal 29 September 1958 sebagaimana tertulis pada Prasasti di Fakultas Sastra, Jalan Nias, Denpasar. Universitas Udayana secara sah berdiri pada tanggal 17 Agustus 1962 dan merupakan perguruan tinggi negeri tertua di daerah Provinsi Bali. Sebelumnya, sejak tanggal 29 September 1958 di Bali sudah berdiri sebuah fakultas yang bernama fakultas Sastra Udayana sebagai cabang dari Universitas Airlangga.\\r\\n\\r\\nFakultas Sastra Udayana inilah yang merupakan embrio daripada berdirinya Universitas Udayana. Berdasarkan Surat Keputusan Menteri PTIP No.104/1962, tanggal 9 Agustus 1962, Universitas Udayana secara sah berdiri sejak tanggal 17 Agustus 1962. Akan tetapi, karena hari lahir Universitas Udayana jatuh bersamaan dengan hari Proklamasi Kemerdekaan Republik Indonesia, maka perayaan hari ulang tahun Universitas Udayana dialihkan menjadi tanggal 29 September dengan mengambil tanggal peresmian fakultas sastra yang telah berdiri sejak tahun 1958.[8].",
+    "dateTimeCreated": "2021-11-19T10:43:27.123226Z",
     "author": "Admin",
     "visitor": 0
   },
   {
-    "HashNumber": 154,
-    "title": "Fmipa Udayana",
-    "imageHeader": "https://i.ibb.co/hW4XjGx/mipa.jpg",
+    "HashNumber": 110,
+    "title": "fmipa udayana",
     "article": "Fakultas Matematika dan Ilmu Pengetahuan Alam (FMIPA) Universitas Udayana terbentuk melalui beberapa tahap. Pada 1984 dibentuk Jurusan Kimia dan Fisika. Pada tahun 1985 dibentuk Jurusan Biologi, dilanjukan dengan jurusan matematka pada tahun 2000 dan terakhir jurusan Farmasi diijinkan 2005.",
-    "dateTimeCreated": "2021-10-27T05:41:52.702310Z",
+    "dateTimeCreated": "2021-11-19T10:43:55.754299Z",
     "author": "Admin",
     "visitor": 0
   }
@@ -62,33 +67,20 @@ python manage.py runserver
 <h4 align="center">URL : https://unud-blog.herokuapp.com/api/blog-post/one-item </h4>
 
 ```http
-  [GET] /api/blog-post/one-item/
+  [POST] /api/blog-post/one-item/
 ```
 
-| Parameter | Type     | Description                       |
+| JSON Body | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `token`      | `string` | **Required** |
-| `HashNumber`      | `integer` | **Required** |
+| `HashNumber`      | `string` | **Required** |
 
 #### Example http
 
 ```http
   [GET] /api/blog-post/one-item/?token=***?HashNumber=57
 ```
-#### Json Response
-```javascript
-[
-  {
-    "HashNumber": 57,
-    "title": "Universitas Udayana",
-    "imageHeader": "https://i.ibb.co/2yCNvNX/Kampus-Unud.jpg",
-    "article": "Sejarah - Cikal bakal Universitas Udayana adalah Fakultas Sastra cabang Universitas Airlangga yang diresmikan oleh P. J. M. Presiden Republik Indonesia Ir. Soekarno, dibuka oleh J. M. Menteri P.P dan K. Prof. DR. Priyono pada tanggal 29 September 1958 sebagaimana tertulis pada Prasasti di Fakultas Sastra, Jalan Nias, Denpasar. Universitas Udayana secara sah berdiri pada tanggal 17 Agustus 1962 dan merupakan perguruan tinggi negeri tertua di daerah Provinsi Bali. Sebelumnya, sejak tanggal 29 September 1958 di Bali sudah berdiri sebuah fakultas yang bernama fakultas Sastra Udayana sebagai cabang dari Universitas Airlangga.\r\n\r\nFakultas Sastra Udayana inilah yang merupakan embrio daripada berdirinya Universitas Udayana. Berdasarkan Surat Keputusan Menteri PTIP No.104/1962, tanggal 9 Agustus 1962, Universitas Udayana secara sah berdiri sejak tanggal 17 Agustus 1962. Akan tetapi, karena hari lahir Universitas Udayana jatuh bersamaan dengan hari Proklamasi Kemerdekaan Republik Indonesia, maka perayaan hari ulang tahun Universitas Udayana dialihkan menjadi tanggal 29 September dengan mengambil tanggal peresmian fakultas sastra yang telah berdiri sejak tahun 1958.[8]",
-    "dateTimeCreated": "2021-10-27T02:37:55.134191Z",
-    "author": "Admin",
-    "visitor": 0
-  }
-]
-```
+#### Example
+![static/img_1.png](static/img_2.png)
 
 #### 
 <h3 align="center">3. Search Article</h3>
@@ -98,9 +90,8 @@ python manage.py runserver
   [POST] /api/search/
 ```
 
-| Multipart | Type     | Description                       |
+| JSON Body | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `token`      | `string` | **Required** |
 | `keyword`      | `string` | **Required** |
 
 #### Example
@@ -116,7 +107,6 @@ python manage.py runserver
 
 | Multipart | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `token`      | `string` | **Required** - Kode Akses |
 | `title`      | `string` | **Required** - Judul Artikel|
 | `article`    | `string` | **Required** - Isi Artikel |
 | `author`      | `string` | **Required** - Penulis Artikel|

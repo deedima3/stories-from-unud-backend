@@ -30,7 +30,7 @@ def cekSearchLinearCollision(keyword):
     newIndex = keyNumber
     while True:
         try:
-            data = BlogMainDatabase.objects.get(HashNumber=newIndex)
+            data = BlogMainDatabase.objects.get(HashNumber=newIndex, acceptByAdmin=True)
             if(data.title == keyword):
                 return data
             else:
