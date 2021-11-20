@@ -5,7 +5,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from Home.viewset_api import BlogHomeViewSetView
 from PostBlog.viewset_api import PostBlogSetView, PostBlogOneItem, SearchArticle
 from CreateNewPost.viewset_api import CreateNewSetView
-from adminValidator.viewset_api import adminValidatorViewSet, login
+from adminValidator.viewset_api import adminValidatorViewSet, login, logout, acceptArticle
 
 
 urlpatterns = [
@@ -20,6 +20,8 @@ urlpatterns = [
 
     path('api/adminValidator/', adminValidatorViewSet, name='Admin Validator Content'),   # GET or POST with token Ba72o5PX4vIH
     path('api/login/', login, name='Login'),
+    path('api/logout/', logout, name='Logout'),
+    path('api/acceptArticle/', acceptArticle, name='AcceptArticleByAdmin'),
 
     path('admin/', admin.site.urls),  # Admin Panel
 ]

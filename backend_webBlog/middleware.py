@@ -1,5 +1,4 @@
 import random
-
 from django.contrib.auth import authenticate
 from rest_framework import status
 from rest_framework.response import Response
@@ -7,13 +6,17 @@ from django.contrib.sessions.backends.db import SessionStore
 from django.contrib.sessions.models import Session
 from django.http import HttpResponse
 
-class ApiAuthentication:
+class ApiPathFilter:
     def __init__(self, get_response):
         self.URLreqToken = [
             '/api/blog-post/',
             '/api/blog-post/one-item/',
             '/api/search/',
             '/api/create/article/',
+        ]
+        self.URLreqSessionID = [
+            '/api/adminValidator/',
+            '/api/acceptArticle/',
         ]
         self.get_response = get_response
 
@@ -27,31 +30,20 @@ class ApiAuthentication:
                 if (result is not None):
                     pass
                 else:
-                    return Response(status=status.HTTP_403_FORBIDDEN)
+                    return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
             else:
-                return Response(status=status.HTTP_403_FORBIDDEN)
+                return HttpResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
             return response
-        elif (request.path == '/api/login/'):
-            if ('usernamePOST' in request.POST and 'passwordPOST' in request.POST):
-                result = authenticate(
-                    username=request.POST['usernamePOST'],
-                    password=request.POST['passwordPOST'],
-                )
-                if (result is not None):
-                    sessionPart = SessionStore()
-                    sessionPart['last_login'] = random.randint(1000000, 9999999)
-                    sessionPart.create()
-                    print(sessionPart.session_key)
-                return response
-        elif (request.path == '/api/adminValidator/'):
-            if ('sessionID' in request.COOKIES):
+        elif (request.path in self.URLreqSessionID):
+            if ('sessionID' in request.headers):
                 try:
-                    getSession = Session.objects.get(pk=request.COOKIES['sessionID'])
-                    return response
+                    getSession = Session.objects.get(pk=request.headers['sessionID'])
+                    pass
                 except:
-                    return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                    return HttpResponse(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                return response
             else:
-                return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                return HttpResponse(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
-            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return response
 

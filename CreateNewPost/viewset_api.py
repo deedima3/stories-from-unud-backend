@@ -1,9 +1,8 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from DATABASE.serializers import BlogSerializers
+from DATABASE.serializers import BlogSerializers, queueArticleSerialize
 from CreateNewPost.ultilites import hashfunction, cekLinearCollision
-import requests
 
 # Create your views here.
 @api_view(['POST'])
@@ -30,7 +29,7 @@ def CreateNewSetView(request):
             'author': request.data['author']
         }
 
-        serializer = BlogSerializers(data=newData)
+        serializer = queueArticleSerialize(data=newData)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
