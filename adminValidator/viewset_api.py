@@ -7,7 +7,7 @@ from DATABASE.serializers import BlogSerializers, queueArticleSerialize
 from django.contrib.auth import authenticate
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
-import random
+import random, json
 
 class antrianArticle:
     def __init__(self):
@@ -44,10 +44,11 @@ def adminValidatorViewSet(request):
 
 @api_view(['GET'])
 def login(request):
-    if ('usernamePOST' in request.body and 'passwordPOST' in request.body):
+    bodyRequest = json.loads(request.body.decode('utf-8'))
+    if ('usernameGET' in bodyRequest and 'passwordGET' in bodyRequest):
         result = authenticate(
-            username=request.body['usernamePOST'],
-            password=request.body['passwordPOST'],
+            username=bodyRequest['usernameGET'],
+            password=bodyRequest['passwordGET'],
         )
         if (result is not None):
             sessionPart = SessionStore()

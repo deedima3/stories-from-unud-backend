@@ -131,10 +131,10 @@ python manage.py runserver
   [GET] /api/login/
 ```
 #### Requirements 
-| Mutipart | Type     | Description            |
+| JSON Body | Type     | Description            |
 | :-------- | :------- | :------------------ |
-| `usernamePOST`      | `string` | **Required** |
-| `passwordPOST`      | `string` | **Required** |
+| `usernameGET`      | `string` | **Required** |
+| `passwordGET`      | `string` | **Required** |
 
 #### Response Example
 ![img.png](static/img_3.png)
