@@ -15,6 +15,23 @@ class antrianArticle:
         self.front = self.dataQueue.first()
         self.rear = self.dataQueue.last()
 
+    def first(self):
+        print(self.front)
+        return self.front
+
+    def last(self):
+        print(self.rear)
+        return self.rear
+
+    def enqueue(self):
+        return None# Not Implemented
+
+    def dequeue(self)
+        return None# Not Implemented
+
+    def getAllQueue(self):
+        return self.dataQueue
+
 # Create your views here.
 @api_view(['GET', 'POST'])
 def adminValidatorViewSet(request):
