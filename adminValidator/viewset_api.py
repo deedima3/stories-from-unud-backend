@@ -26,7 +26,7 @@ class antrianArticle:
     def enqueue(self):
         return None# Not Implemented
 
-    def dequeue(self)
+    def dequeue(self):
         return None# Not Implemented
 
     def getAllQueue(self):
