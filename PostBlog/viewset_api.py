@@ -8,18 +8,18 @@ from CreateNewPost import ultilites
 
 # Create your views here.
 
-@api_view(['POST'])
+@api_view(['GET'])
 def PostBlogSetView(request, format=None):
-    if (str(request.method).lower() == 'post'):
+    if (str(request.method).lower() == 'get'):
         blogs = BlogMainDatabase.objects.filter(acceptByAdmin=True)
         serializer = BlogSerializers(blogs, many=True)
         return Response(serializer.data)
     else:
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-@api_view(['POST'])
+@api_view(['GET'])
 def PostBlogOneItem(request, format=None):
-    if (str(request.method).lower() == 'post'):
+    if (str(request.method).lower() == 'get'):
         try:
             try:
                 bodyRequest = json.loads(request.body.decode('utf-8'))
@@ -34,9 +34,9 @@ def PostBlogOneItem(request, format=None):
     else:
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-@api_view(['POST'])
+@api_view(['GET'])
 def SearchArticle(request):
-    if (str(request.method).lower() == 'post'):
+    if (str(request.method).lower() == 'get'):
         try:
             bodyRequest = json.loads(request.body.decode('utf-8'))
             keyword = str(bodyRequest['keyword']).lower()

@@ -33,7 +33,7 @@ class antrianArticle:
         return self.dataQueue
 
 # Create your views here.
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def adminValidatorViewSet(request):
     dataResponse = {
         'status': 'OK'
@@ -42,12 +42,12 @@ def adminValidatorViewSet(request):
     dataSerializer = queueArticleSerialize(queueKu.getAllQueue(), many=True)
     return Response(dataSerializer.data)
 
-@api_view(['POST'])
+@api_view(['GET'])
 def login(request):
-    if ('usernamePOST' in request.POST and 'passwordPOST' in request.POST):
+    if ('usernamePOST' in request.body and 'passwordPOST' in request.body):
         result = authenticate(
-            username=request.POST['usernamePOST'],
-            password=request.POST['passwordPOST'],
+            username=request.body['usernamePOST'],
+            password=request.body['passwordPOST'],
         )
         if (result is not None):
             sessionPart = SessionStore()
@@ -58,7 +58,7 @@ def login(request):
     else:
         return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['POST'])
+@api_view(['DELETE'])
 def logout(request):
     if ('sessionID' in request.headers):
         try:

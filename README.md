@@ -1,4 +1,4 @@
-# Application Program Website Blog Unud
+<h1 align="center">Stories Blog Udayana</h1>
 <p align="center"><img align="center" src="https://upload.wikimedia.org/wikipedia/id/2/2d/Logo-unud-baru.png"></p>
 Kumpulan artikel seputar Universitas Udayana.
 
@@ -23,7 +23,7 @@ python manage.py runserver
 #### 
 
 ```http
-   [POST] /api/blog-post/
+   [GET] /api/blog-post/
 ```
 #### Requirements
 | Header | Type     | Description                       |
@@ -31,42 +31,14 @@ python manage.py runserver
 | `token`      | `string` | **Required** |
 
 #### Response Example
-
-```javascript
-[
-  {
-    "HashNumber": 59,
-    "title": "teknik udayana",
-    "article": "Fakultas Teknik Universitas Udayana secara resmi berdiri pada tanggal 1 Oktober 1965 dengan Surat Keputusan Menteri PTIP No. 248/Sek/P.U/1965, tanggal 20 Oktober 1965, yang terdiri dari dua jurusan yaitu Jurusan Arsitektur dan Jurusan Seni Rupa. Sebagai latar belakang pendirian Fakultas Teknik Universitas Udayana, adalah dalam rangka pelestarian, pengembangan kebudayaan Daerah Bali pada khususnya dan kebudayaan nasional pada umumnya, terutama di dalam menghadapi pembangunan dan perkembangan kepariwisataan.",
-    "dateTimeCreated": "2021-11-19T10:40:40.842714Z",
-    "author": "Jeremi",
-    "visitor": 0
-  },
-  {
-    "HashNumber": 205,
-    "title": "universitas udayana",
-    "article": "Sejarah - Cikal bakal Universitas Udayana adalah Fakultas Sastra cabang Universitas Airlangga yang diresmikan oleh P. J. M. Presiden Republik Indonesia Ir. Soekarno, dibuka oleh J. M. Menteri P.P dan K. Prof. DR. Priyono pada tanggal 29 September 1958 sebagaimana tertulis pada Prasasti di Fakultas Sastra, Jalan Nias, Denpasar. Universitas Udayana secara sah berdiri pada tanggal 17 Agustus 1962 dan merupakan perguruan tinggi negeri tertua di daerah Provinsi Bali. Sebelumnya, sejak tanggal 29 September 1958 di Bali sudah berdiri sebuah fakultas yang bernama fakultas Sastra Udayana sebagai cabang dari Universitas Airlangga.\\r\\n\\r\\nFakultas Sastra Udayana inilah yang merupakan embrio daripada berdirinya Universitas Udayana. Berdasarkan Surat Keputusan Menteri PTIP No.104/1962, tanggal 9 Agustus 1962, Universitas Udayana secara sah berdiri sejak tanggal 17 Agustus 1962. Akan tetapi, karena hari lahir Universitas Udayana jatuh bersamaan dengan hari Proklamasi Kemerdekaan Republik Indonesia, maka perayaan hari ulang tahun Universitas Udayana dialihkan menjadi tanggal 29 September dengan mengambil tanggal peresmian fakultas sastra yang telah berdiri sejak tahun 1958.[8].",
-    "dateTimeCreated": "2021-11-19T10:43:27.123226Z",
-    "author": "Admin",
-    "visitor": 0
-  },
-  {
-    "HashNumber": 110,
-    "title": "fmipa udayana",
-    "article": "Fakultas Matematika dan Ilmu Pengetahuan Alam (FMIPA) Universitas Udayana terbentuk melalui beberapa tahap. Pada 1984 dibentuk Jurusan Kimia dan Fisika. Pada tahun 1985 dibentuk Jurusan Biologi, dilanjukan dengan jurusan matematka pada tahun 2000 dan terakhir jurusan Farmasi diijinkan 2005.",
-    "dateTimeCreated": "2021-11-19T10:43:55.754299Z",
-    "author": "Admin",
-    "visitor": 0
-  }
-]
-```
+![img.png](static/img_7.png)
 
 #### 
 <h3 align="center">2. Get One Article [GUEST]</h3>
 <h4 align="center">URL : https://unud-blog.herokuapp.com/api/blog-post/one-item/ </h4>
 
 ```http
-  [POST] /api/blog-post/one-item/
+  [GET] /api/blog-post/one-item/
 ```
 #### Requirements
 | JSON Body | Type     | Description                       |
@@ -85,7 +57,7 @@ python manage.py runserver
 <h4 align="center">URL : https://unud-blog.herokuapp.com/api/search/ </h4>
 
 ```http
-  [POST] /api/search/
+  [GET] /api/search/
 ```
 #### Requirements
 | JSON Body | Type     | Description                       |
@@ -120,11 +92,11 @@ python manage.py runserver
 
 #### 
 <h3 align="center">---------------------- Page Validator Article ------------------------</h3>
-<h3 align="center">Get All Article</h3>
+<h3 align="center">Get All Article [ADMIN]</h3>
 <h4 align="center">URL : https://unud-blog.herokuapp.com/api/adminValidator/ </h4>
 
 ```http
-  [GET/POST] /api/adminValidator/
+  [GET] /api/adminValidator/
 ```
 #### Requirements 
 | Header | Type     | Description            | Catatan |
@@ -134,11 +106,11 @@ python manage.py runserver
 #### Response Example
 ![img.png](static/img_5.png)
 
-<h3 align="center">Accept Article</h3>
+<h3 align="center">Accept Article [ADMIN]</h3>
 <h4 align="center">URL : https://unud-blog.herokuapp.com/api/acceptArticle/ </h4>
 
 ```http
-  [GET/POST] /api/acceptArticle/
+  [POST] /api/acceptArticle/
 ```
 #### Requirements 
 | Multipart | Type     | Description                       |
@@ -156,7 +128,7 @@ python manage.py runserver
 <h4 align="center">URL : https://unud-blog.herokuapp.com/api/login/ </h4>
 
 ```http
-  [POST] /api/login/
+  [GET] /api/login/
 ```
 #### Requirements 
 | Mutipart | Type     | Description            |
@@ -171,7 +143,7 @@ python manage.py runserver
 <h4 align="center">URL : https://unud-blog.herokuapp.com/api/logout/ </h4>
 
 ```http
-  [POST] /api/logout/
+  [DELETE] /api/logout/
 ```
 #### Requirements 
 | Header | Type     | Description            |
