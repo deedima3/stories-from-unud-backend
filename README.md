@@ -81,6 +81,7 @@ python manage.py runserver
 | Multipart | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `title`      | `string` | **Required** - Judul Artikel|
+| `imageUpload`      | `image file` | **Required** - Gambar|
 | `article`    | `string` | **Required** - Isi Artikel |
 | `author`      | `string` | **Required** - Penulis Artikel|
 
