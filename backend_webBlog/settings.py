@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'DATABASE',
     'rest_framework',
-    'Home',
     'PostBlog',
     'CreateNewPost',
     'adminValidator',
