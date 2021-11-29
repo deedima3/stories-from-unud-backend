@@ -19,7 +19,7 @@ python manage.py runserver
 
 ## API Reference
 <h3 align="center">1. Get All Article [GUEST]</h3>
-<h4 align="center">URL : https://unud-blog.herokuapp.com/api/blog-post/ </h4>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/blog-post/ </h4>
 #### 
 
 ```http
@@ -35,7 +35,7 @@ python manage.py runserver
 
 #### 
 <h3 align="center">2. Get One Article [GUEST]</h3>
-<h4 align="center">URL : https://unud-blog.herokuapp.com/api/blog-post/one-item/ </h4>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/blog-post/one-item/ </h4>
 
 ```http
   [GET] /api/blog-post/one-item/
@@ -54,7 +54,7 @@ python manage.py runserver
 
 #### 
 <h3 align="center">3. Search Article [GUEST]</h3>
-<h4 align="center">URL : https://unud-blog.herokuapp.com/api/search/ </h4>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/search/ </h4>
 
 ```http
   [GET] /api/search/
@@ -72,7 +72,7 @@ python manage.py runserver
 
 #### 
 <h3 align="center">4. Create New Article [GUEST]</h3>
-<h4 align="center">URL : https://unud-blog.herokuapp.com/api/create/article/ </h4>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/create/article/ </h4>
 
 ```http
   [POST] /api/create/article/
@@ -108,7 +108,7 @@ python manage.py runserver
 ![img.png](static/img_5.png)
 
 <h3 align="center">Accept Article [ADMIN]</h3>
-<h4 align="center">URL : https://unud-blog.herokuapp.com/api/acceptArticle/ </h4>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/acceptArticle/ </h4>
 
 ```http
   [POST] /api/acceptArticle/
@@ -126,7 +126,7 @@ python manage.py runserver
 ![img.png](static/img_6.png)
 
 <h3 align="center">Login</h3>
-<h4 align="center">URL : https://unud-blog.herokuapp.com/api/login/ </h4>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/login/ </h4>
 
 ```http
   [GET] /api/login/
@@ -141,7 +141,7 @@ python manage.py runserver
 ![img.png](static/img_3.png)
 
 <h3 align="center">Logout</h3>
-<h4 align="center">URL : https://unud-blog.herokuapp.com/api/logout/ </h4>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/logout/ </h4>
 
 ```http
   [DELETE] /api/logout/
