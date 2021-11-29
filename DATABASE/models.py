@@ -4,10 +4,25 @@ from django.db import models
 class BlogMainDatabase(models.Model):
     HashNumber = models.IntegerField(default=9999, blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
-    imageHeader = models.CharField(max_length=255, blank=True, null=True)
+    imageUrl = models.CharField(max_length=255, blank=True, null=True)
     article = models.TextField()
-    dateCreated = models.DateField(auto_now_add=True)
+    dateTimeCreated = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     author = models.CharField(max_length=150)
+    visitor = models.IntegerField(default=0)
+    acceptByAdmin = models.BooleanField(default=False, blank=True, null=True)
+
+    def __str__(self):
+        return "{}. {}".format(self.id, self.title)
+
+class queueArticle(models.Model):
+    HashNumber = models.IntegerField(default=9999, blank=True, null=True)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    imageUrl = models.CharField(max_length=255, blank=True, null=True)
+    article = models.TextField()
+    dateTimeCreated = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    author = models.CharField(max_length=150)
+    visitor = models.IntegerField(default=0)
+    acceptByAdmin = models.BooleanField(default=False, blank=True, null=True)
 
     def __str__(self):
         return "{}. {}".format(self.id, self.title)
