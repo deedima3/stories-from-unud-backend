@@ -13,6 +13,7 @@ class ApiPathFilter:
             '/api/blog-post/one-item/',
             '/api/search/',
             '/api/create/article/',
+            '/api/visitor-increment/',
         ]
         self.URLreqSessionID = [
             '/api/adminValidator/',

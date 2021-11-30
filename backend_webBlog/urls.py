@@ -2,13 +2,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from PostBlog.viewset_api import PostBlogSetView, PostBlogOneItem, SearchArticle
+from PostBlog.viewset_api import PostBlogSetView, PostBlogOneItem, SearchArticle, visitor
 from CreateNewPost.viewset_api import CreateNewSetView
 from adminValidator.viewset_api import adminValidatorViewSet, login, logout, acceptArticle
-from CreateNewPost.viewset_api import visitor
 
 urlpatterns = [
-    path('api/visitor-increment', visitor , name='Visitor Increment')
+    path('api/visitor-increment/', visitor, name='Visitor Increment'),
     path('api/blog-post/', PostBlogSetView, name='Page Blog Post'),               # GET with token Ba72o5PX4vIH
     path('api/blog-post/one-item/', PostBlogOneItem, name='Blog Dynamic Route'),  # POST with token Ba72o5PX4vIH
 

@@ -92,7 +92,26 @@ python manage.py runserver
 ![img.png](static/img.png)
 
 #### 
-<h3 align="center">---------------------- Page Validator Article ------------------------</h3>
+
+<h3 align="center">5. Visitor Increment [GUEST]</h3>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/visitor-increment/ </h4>
+
+```http
+  [GET] /api/search/
+```
+#### Requirements
+| JSON Body | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `HashNumber`      | `number` | **Required** |
+
+| Header | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `token`      | `string` | **Required** |
+#### Example Response
+![img.png](static/img8.png)
+
+##
+<h3 align="center"><------------------------------ Page Validator Article --------------------------------></h3>
 <h3 align="center">Get All Article [ADMIN]</h3>
 <h4 align="center">URL : https://unud-blog.herokuapp.com/api/adminValidator/ </h4>
 
