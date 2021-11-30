@@ -44,3 +44,23 @@ def CreateNewSetView(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+ @api_view(['POST'])
+    def visitor(request):
+        if(str(request.method).lower()=='POST'):
+            try:
+                try:
+                    bodyRequest = json.loads(request.body.decode('utf-8'))
+                    HashNumber = int(bodyRequest['HashNumber'])
+                except:
+                    return Response(status=status.HTTP_400_BAD_REQUEST)
+                Content = BlogMainDatabase.objects.get(HashNumber=HashNumber)
+                Content.visitor += 1
+                Content.save()
+                Content.update()
+                serializer = BlogSerializer(Content)
+                return Response(serializers.data)
+            except BlogMainDatabase.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+        else:
+            return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
