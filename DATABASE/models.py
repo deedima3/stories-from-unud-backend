@@ -26,3 +26,12 @@ class queueArticle(models.Model):
 
     def __str__(self):
         return "{}. {}".format(self.id, self.title)
+
+class comments(models.Model):
+        name = models.CharField(max_length=100)
+        comment = models.TextField()
+        email = models.EmailField()
+        article = models.ForeignKey(BlogMainDatabase, on_delete=models.CASCADE())
+
+    def __str__(self):
+        return "{}. {}|{}".format(self.id, self.name, self.article)
