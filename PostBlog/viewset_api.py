@@ -5,13 +5,33 @@ from rest_framework.response import Response
 from DATABASE.models import BlogMainDatabase
 from DATABASE.serializers import BlogSerializers
 from CreateNewPost import ultilites
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.generics import ListAPIView
+
+
+def bubbleSort(listData):
+    n = len(listData)
+    for i in range(n - 1):
+        for j in range(0, n - i - 1):
+            if (listData[j].visitor < listData[j + 1].visitor):
+                listData[j], listData[j + 1] = listData[j + 1], listData[j]
 
 # Create your views here.
+
+class ApiBlogListView(ListAPIView):
+    queryset = BlogMainDatabase.objects.all()
+    serializer_class = BlogSerializers
+    pagination_class = PageNumberPagination
 
 @api_view(['GET'])
 def PostBlogSetView(request, format=None):
     if (str(request.method).lower() == 'get'):
-        blogs = BlogMainDatabase.objects.filter(acceptByAdmin=True)
+        blogs = list(BlogMainDatabase.objects.filter(acceptByAdmin=True))
+        if ('sorting' in request.GET):
+            if (request.GET['sorting'] == 'yes'):
+                bubbleSort(blogs)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
         serializer = BlogSerializers(blogs, many=True)
         return Response(serializer.data)
     else:

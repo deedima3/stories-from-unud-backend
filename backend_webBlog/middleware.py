@@ -10,6 +10,7 @@ class ApiPathFilter:
     def __init__(self, get_response):
         self.URLreqToken = [
             '/api/blog-post/',
+            '/api/blog-post/list',
             '/api/blog-post/one-item/',
             '/api/search/',
             '/api/create/article/',
@@ -17,6 +18,7 @@ class ApiPathFilter:
         ]
         self.URLreqSessionID = [
             '/api/adminValidator/',
+            '/api/adminValidator/list',
             '/api/acceptArticle/',
         ]
         self.get_response = get_response
