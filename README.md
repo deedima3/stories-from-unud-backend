@@ -168,7 +168,7 @@ python manage.py runserver
 <h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/comment/?HashNumber=205 </h4>
 
 ```http
-  [GET] /api/search/
+  [GET] /api/comment/
 ```
 #### Requirements
 | GET          | Type     | Description                       |
@@ -224,7 +224,7 @@ python manage.py runserver
 <h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/comment/new/ </h4>
 
 ```http
-  [POST] /api/search/
+  [POST] /api/comment/new/
 ```
 #### Requirements
 | JSON Body    | Type          | Description                       |
@@ -244,7 +244,7 @@ python manage.py runserver
 
 ##
 <h3 align="center"><------------------------------ Page Validator Article --------------------------------></h3>
-<h3 align="center">6. Get All Article [ADMIN]</h3>
+<h3 align="center">8. Get All Article [ADMIN]</h3>
 <h4 align="center">URL : https://unud-blog.herokuapp.com/api/adminValidator/ </h4>
 
 ```http
@@ -259,7 +259,7 @@ python manage.py runserver
 ![img.png](static/img_5.png)
 
 ##
-<h3 align="center">6.1 Get All Article with pagination [ADMIN]</h3>
+<h3 align="center">8.1 Get All Article with pagination [ADMIN]</h3>
 <h4 align="center">URL : https://unud-blog.herokuapp.com/api/adminValidator/list?page=1 </h4>
 
 ```http
@@ -271,7 +271,7 @@ python manage.py runserver
 | `sessionID`      | `string` | **Required** | `sessionID didapatkan dari login`  |
 
 ##
-<h3 align="center">7. Accept Article [ADMIN]</h3>
+<h3 align="center">9. Accept Article [ADMIN]</h3>
 <h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/acceptArticle/ </h4>
 
 ```http
@@ -290,7 +290,7 @@ python manage.py runserver
 ![img.png](static/img_6.png)
 
 ##
-<h3 align="center">8. Login</h3>
+<h3 align="center">10. Login</h3>
 <h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/login/ </h4>
 
 ```http
@@ -306,7 +306,7 @@ python manage.py runserver
 ![img.png](static/img_3.png)
 
 ##
-<h3 align="center">9. Logout</h3>
+<h3 align="center">11. Logout</h3>
 <h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/logout/ </h4>
 
 ```http
