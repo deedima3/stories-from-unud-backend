@@ -7,7 +7,9 @@ from PostBlog.viewset_api import (
     PostBlogOneItem,
     SearchArticle,
     visitor,
-    ApiBlogListView
+    ApiBlogListView,
+    GETcomment,
+    POSTCommnet,
 )
 from CreateNewPost.viewset_api import CreateNewSetView
 from adminValidator.viewset_api import (
@@ -20,6 +22,8 @@ from adminValidator.viewset_api import (
 
 urlpatterns = [
     path('api/visitor-increment/', visitor, name='Visitor Increment'),
+    path('api/comment/', GETcomment, name='Get All Comments'),
+    path('api/comment/new/', POSTCommnet, name='new comment'),
 
     path('api/blog-post/one-item/', PostBlogOneItem, name='Blog Dynamic Route'),
     path('api/blog-post/list', ApiBlogListView.as_view(), name='Page Blog Post Pagination'),
