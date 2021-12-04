@@ -2,6 +2,8 @@ import json
 import random
 
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 from django.contrib.sessions.backends.db import SessionStore
 from django.contrib.sessions.models import Session
 from django.http import HttpResponse
@@ -67,7 +69,13 @@ def login(request):
             sessionPart['last_login'] = random.randint(1000000, 9999999)
             sessionPart.create()
             print(sessionPart.session_key)
-            return HttpResponse(headers={'sessionID': str(sessionPart.session_key)}, status=status.HTTP_200_OK)
+            return Response({"success": "login success"}, headers={'sessionID': str(sessionPart.session_key)}, status=status.HTTP_200_OK, content_type='application/json')
+        else:
+            try:
+                User.objects.get(username=bodyRequest['usernameGET'])
+                return Response({"fail": "Wrong Password"}, status=status.HTTP_400_BAD_REQUEST)
+            except:
+                return Response({"fail": "both"}, status=status.HTTP_404_NOT_FOUND)
     else:
         return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
 
