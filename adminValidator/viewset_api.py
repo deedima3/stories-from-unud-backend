@@ -1,13 +1,19 @@
+import json
+import random
+
+from django.contrib.auth import authenticate
+from django.contrib.sessions.backends.db import SessionStore
+from django.contrib.sessions.models import Session
+from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
+from rest_framework.generics import ListAPIView
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
-from django.http import HttpResponse
+
 from DATABASE.models import BlogMainDatabase, queueArticle
-from DATABASE.serializers import BlogSerializers, queueArticleSerialize
-from django.contrib.auth import authenticate
-from django.contrib.sessions.models import Session
-from django.contrib.sessions.backends.db import SessionStore
-import random, json
+from DATABASE.serializers import queueArticleSerialize
+
 
 class antrianArticle:
     def __init__(self):
@@ -33,13 +39,19 @@ class antrianArticle:
         return self.dataQueue
 
 # Create your views here.
+
+class ApiBlogValidator(ListAPIView):
+    queryset = antrianArticle().getAllQueue()
+    serializer_class = queueArticleSerialize
+    pagination_class = PageNumberPagination
+
 @api_view(['GET'])
 def adminValidatorViewSet(request):
     dataResponse = {
         'status': 'OK'
     }
-    queueKu = antrianArticle()
-    dataSerializer = queueArticleSerialize(queueKu.getAllQueue(), many=True)
+    queueKu = antrianArticle().getAllQueue()
+    dataSerializer = queueArticleSerialize(queueKu, many=True)
     return Response(dataSerializer.data)
 
 @api_view(['GET'])
