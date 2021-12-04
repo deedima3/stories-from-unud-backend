@@ -15,6 +15,8 @@ class ApiPathFilter:
             '/api/search/',
             '/api/create/article/',
             '/api/visitor-increment/',
+            '/api/comment/',
+            '/api/comment/new/'
         ]
         self.URLreqSessionID = [
             '/api/adminValidator/',

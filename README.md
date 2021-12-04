@@ -162,7 +162,85 @@ python manage.py runserver
 | :-------- | :------- | :-------------------------------- |
 | `token`      | `string` | **Required** |
 #### Example Response
-![img.png](static/img8.png)
+![img.png](static/img_8.png)
+
+<h3 align="center">6. Get All Comment [GUEST]</h3>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/comment/?HashNumber=205 </h4>
+
+```http
+  [GET] /api/search/
+```
+#### Requirements
+| GET          | Type     | Description                       |
+|:-------------| :------- | :-------------------------------- |
+| `HashNumber` | `number` | **Required** |
+
+| Header | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `token`      | `string` | **Required** |
+#### Example Response
+```json
+[
+  {
+    "name": "Kocheng Orennn",
+    "comment": "MEOWWWWW!!!!!!!!!!!!!",
+    "email": "UWUorange@gmail.com",
+    "articleHash": 205
+  },
+  {
+    "name": "Kocheng",
+    "comment": "Meoww meoww MEOWWWWW!!!",
+    "email": "UWU@gmail.com",
+    "articleHash": 205
+  },
+  {
+    "name": "Yanda",
+    "comment": "No comment lah",
+    "email": "Yanda@gmail.com",
+    "articleHash": 205
+  },
+  {
+    "name": "Bianca",
+    "comment": "Ga sabar kuliahhhh",
+    "email": "bianca@gmail.com",
+    "articleHash": 205
+  },
+  {
+    "name": "Dima",
+    "comment": "Di Udayana banyak kochenggg!!!!",
+    "email": "gedesudimahendra@gmail.com",
+    "articleHash": 205
+  },
+  {
+    "name": "Jeremi",
+    "comment": "KEREN!!!! Udayana jaya jaya jaya",
+    "email": "overload.emperor14@gmail.com",
+    "articleHash": 205
+  }
+]
+```
+##
+<h3 align="center">7. New Comment [GUEST]</h3>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/comment/new/ </h4>
+
+```http
+  [POST] /api/search/
+```
+#### Requirements
+| JSON Body    | Type          | Description                       |
+|:-------------|:--------------| :-------------------------------- |
+| `HashNumber` | `number`      | **Required** |
+| `name`       | `string`      | **Required** |
+| `comment`    | `string/text` | **Required** |
+| `email`      | `string`      | **Required** |
+
+| Header | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `token`      | `string` | **Required** |
+
+#### Example Responses
+![img.png](static/img_9.png)
+
 
 ##
 <h3 align="center"><------------------------------ Page Validator Article --------------------------------></h3>
