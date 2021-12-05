@@ -89,40 +89,40 @@ python manage.py runserver
 
 ##
 <h3 align="center">2. Get One Article [GUEST]</h3>
-<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/blog-post/one-item/ </h4>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/blog-post/one-item/?HashNumber=50 </h4>
 
 ```http
   [GET] /api/blog-post/one-item/
 ```
 #### Requirements
-| JSON Body | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `HashNumber`      | `string` | **Required** |
+| GET          | Type     | Description                       |
+|:-------------| :------- | :-------------------------------- |
+| `HashNumber` | `string` | **Required** |
 
 | Header | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `token`      | `string` | **Required** |
 
 #### Response Example
-![static/img_1.png](static/img_2.png)
+![img.png](static/img_2.png)
 
 ##
 <h3 align="center">3. Search Article [GUEST]</h3>
-<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/search/ </h4>
+<h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/search/?keyword=teknik+udayana </h4>
 
 ```http
   [GET] /api/search/
 ```
 #### Requirements
-| JSON Body | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `keyword`      | `string` | **Required** |
+| GET       | Type     | Description                       |
+|:----------| :------- | :-------------------------------- |
+| `keyword` | `string` | **Required** |
 
 | Header | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `token`      | `string` | **Required** |
 #### Example Response
-![static/img_1.png](static/img_1.png)
+![img.png](static/img_1.png)
 
 ##
 <h3 align="center">4. Create New Article [GUEST]</h3>
@@ -151,12 +151,12 @@ python manage.py runserver
 <h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/visitor-increment/ </h4>
 
 ```http
-  [GET] /api/search/
+  [POST] /api/search/
 ```
 #### Requirements
-| JSON Body | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `HashNumber`      | `number` | **Required** |
+| JSON         | Type     | Description                       |
+|:-------------| :------- | :-------------------------------- |
+| `HashNumber` | `number` | **Required** |
 
 | Header | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
@@ -294,7 +294,7 @@ python manage.py runserver
 <h4 align="center">URL : https://stories-from-unud.herokuapp.com/api/login/ </h4>
 
 ```http
-  [GET] /api/login/
+  [POST] /api/login/
 ```
 #### Requirements 
 | JSON Body | Type     | Description            |

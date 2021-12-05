@@ -112,8 +112,7 @@ def PostBlogOneItem(request, format=None):
     if (str(request.method).lower() == 'get'):
         try:
             try:
-                bodyRequest = json.loads(request.body.decode('utf-8'))
-                HashNumber = int(bodyRequest['HashNumber'])
+                HashNumber = int(request.GET['HashNumber'])
             except:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             oneContent = BlogMainDatabase.objects.get(HashNumber=HashNumber)
@@ -128,8 +127,8 @@ def PostBlogOneItem(request, format=None):
 def SearchArticle(request):
     if (str(request.method).lower() == 'get'):
         try:
-            bodyRequest = json.loads(request.body.decode('utf-8'))
-            keyword = str(bodyRequest['keyword']).lower()
+            keyword = str(request.GET['keyword']).lower().replace('+', ' ')
+            print(keyword)
         except:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         data = ultilites.cekSearchLinearCollision(keyword=keyword)
@@ -148,7 +147,7 @@ def visitor(request):
         try:
             try:
                 bodyRequest = json.loads(request.body.decode('utf-8'))
-                HashNumber = int(bodyRequest['HashNumber'])
+                HashNumber = int(request.GET['HashNumber'])
             except:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             Content = BlogMainDatabase.objects.get(HashNumber=HashNumber)
