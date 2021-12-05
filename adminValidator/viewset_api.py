@@ -56,7 +56,7 @@ def adminValidatorViewSet(request):
     dataSerializer = queueArticleSerialize(queueKu, many=True)
     return Response(dataSerializer.data)
 
-@api_view(['GET'])
+@api_view(['POST'])
 def login(request):
     bodyRequest = json.loads(request.body.decode('utf-8'))
     if ('usernameGET' in bodyRequest and 'passwordGET' in bodyRequest):
