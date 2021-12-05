@@ -147,7 +147,7 @@ def visitor(request):
         try:
             try:
                 bodyRequest = json.loads(request.body.decode('utf-8'))
-                HashNumber = int(request.GET['HashNumber'])
+                HashNumber = int(bodyRequest['HashNumber'])
             except:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
             Content = BlogMainDatabase.objects.get(HashNumber=HashNumber)
