@@ -93,24 +93,25 @@ WSGI_APPLICATION = 'backend_webBlog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Heroku database postgresql, USE THIS FOR DEPLOY / DEMO PRODUCTION
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'jwhumlzatwyamg',
-#        'HOST': 'ec2-44-195-240-222.compute-1.amazonaws.com',
-#        'PORT': 5432,
-#        'USER': 'd14g3gjbi0sulr',
-#        'PASSWORD': '13545ff11728fcc2e239be9e98fc7bc4a8e75c0d073a22847ebbbd212009fc64',
-#    }
-# }
+# postgres://oqtluullzsmhdo:9ddcdcbd102bc117e03b32609468db012f184d32eb9814eeeb3e5438d402b94f@ec2-34-242-89-204.eu-west-1.compute.amazonaws.com:5432/d5hhdu1mppqfh6
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'd5hhdu1mppqfh6',
+       'HOST': 'ec2-34-242-89-204.eu-west-1.compute.amazonaws.com',
+       'PORT': 5432,
+       'USER': 'oqtluullzsmhdo',
+       'PASSWORD': '9ddcdcbd102bc117e03b32609468db012f184d32eb9814eeeb3e5438d402b94f',
+   }
+}
 
 
 # Password validation
