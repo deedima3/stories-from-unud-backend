@@ -8,13 +8,16 @@ from CreateNewPost import ultilites
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.generics import ListAPIView
 
+def bubbleSortRecursive(n=None, array=[]):
+    # Base case
+    if n == 1:
+        return
 
-def bubbleSort(listData):
-    n = len(listData)
     for i in range(n - 1):
-        for j in range(0, n - i - 1):
-            if (listData[j].visitor < listData[j + 1].visitor):
-                listData[j], listData[j + 1] = listData[j + 1], listData[j]
+        if array[i].visitor < array[i + 1].visitor:
+            array[i], array[i + 1] = array[i + 1], array[i]
+
+    bubbleSortRecursive(n - 1, array)
 
 class antrianComment:
     def __init__(self, hash):
@@ -98,8 +101,8 @@ def PostBlogSetView(request, format=None):
     if (str(request.method).lower() == 'get'):
         blogs = list(BlogMainDatabase.objects.filter(acceptByAdmin=True))
         if ('sorting' in request.GET):
-            if (request.GET['sorting'] == 'yes'):
-                bubbleSort(blogs)
+            if request.GET['sorting'] == 'yes':
+                bubbleSortRecursive(n=len(blogs), array=blogs)
             else:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
         serializer = BlogSerializers(blogs, many=True)
