@@ -133,9 +133,9 @@ python manage.py runserver
 ```
 #### Requirements
 | Multipart | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
+| :-------- |:---------| :-------------------------------- |
 | `title`      | `string` | **Required** - Judul Artikel|
-| `imageUpload`      | `image file` | **Required** - Gambar|
+| `imageUpload`      | `string` | **Required** - Gambar|
 | `article`    | `string` | **Required** - Isi Artikel |
 | `author`      | `string` | **Required** - Penulis Artikel|
 
