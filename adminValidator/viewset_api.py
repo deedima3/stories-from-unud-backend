@@ -18,10 +18,18 @@ from DATABASE.serializers import queueArticleSerialize
 
 
 class antrianArticle:
-    def __init__(self):
-        self.dataQueue = queueArticle.objects.all()
-        self.front = self.dataQueue.first()
-        self.rear = self.dataQueue.last()
+    def __init__(self, datas):
+        self.datas = datas
+        self.dataQueue = []
+        self.front = None
+        self.rear = None
+
+    def convertToQueue(self):
+        for data in self.datas:
+            self.enqueue(data)
+        self.front = self.dataQueue[0]
+        self.rear = self.dataQueue[-1]
+        return self.getAllQueue()
 
     def first(self):
         print(self.front)
@@ -31,8 +39,8 @@ class antrianArticle:
         print(self.rear)
         return self.rear
 
-    def enqueue(self):
-        return None# Not Implemented
+    def enqueue(self, data):
+        self.dataQueue.append(data)
 
     def dequeue(self):
         return None# Not Implemented
@@ -43,7 +51,7 @@ class antrianArticle:
 # Create your views here.
 
 class ApiBlogValidator(ListAPIView):
-    queryset = antrianArticle().getAllQueue()
+    queryset = antrianArticle(datas=queueArticle.objects.all()).convertToQueue()
     serializer_class = queueArticleSerialize
     pagination_class = PageNumberPagination
 
@@ -52,7 +60,7 @@ def adminValidatorViewSet(request):
     dataResponse = {
         'status': 'OK'
     }
-    queueKu = antrianArticle().getAllQueue()
+    queueKu = antrianArticle(datas=queueArticle.objects.all()).convertToQueue()
     dataSerializer = queueArticleSerialize(queueKu, many=True)
     return Response(dataSerializer.data)
 

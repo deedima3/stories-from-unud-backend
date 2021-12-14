@@ -23,7 +23,9 @@ class antrianComment:
     def __init__(self, hash):
         self.HashNumber = hash
         self.ForeignKey = BlogMainDatabase.objects.get(HashNumber=hash)
-        self.dataQueue = list(comments.objects.filter(articleHash=hash).order_by('-id'))
+        self.dataQueue = []
+        for data in comments.objects.filter(articleHash=hash).order_by('-id'):
+            self.dataQueue.append(data)
         self.front = self.dataQueue[0]
         self.rear = self.dataQueue[-1]
 
