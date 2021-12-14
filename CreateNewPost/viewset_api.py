@@ -22,17 +22,10 @@ def CreateNewSetView(request):
             serializerError.is_valid()
             return Response(serializerError.errors, status=status.HTTP_400_BAD_REQUEST) # Penyimpanan sudah penuh
 
-        gambarHeader = request.FILES['imageUpload']
-        responeImgBB = requests.post('https://api.imgbb.com/1/upload', params={
-            'key': 'cc2fb31bb534ef735f2ec080c490206f'
-        }, files={
-            'image': gambarHeader.read()
-        }).json()
-
         newData = {
             'HashNumber': keyHashFinal,
             'title': str(request.data['title']).lower(),
-            'imageUrl': responeImgBB['data']['display_url'],
+            'imageUrl': request.data['imageUpload'],
             'article': request.data['article'],
             'author': request.data['author']
         }
