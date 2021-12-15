@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from DATABASE.serializers import BlogSerializers, queueArticleSerialize
 from CreateNewPost.ultilites import hashfunction, cekLinearCollision
-import requests
+import requests, json
 
 # Create your views here.
 @api_view(['POST'])
