@@ -9,9 +9,12 @@ import requests
 @api_view(['POST'])
 def CreateNewSetView(request):
     if (str(request.method).lower() == 'post'):
-        print(request.POST)
+        try:
+            bodyRequest = json.loads(request.body.decode('utf-8'))
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
-        kataKunci = str(request.POST['title']).lower()
+        kataKunci = str(bodyRequest['title']).lower()
         keyHash = hashfunction(word=kataKunci)
         hasil = cekLinearCollision(keyNumber=keyHash)
 
@@ -22,10 +25,10 @@ def CreateNewSetView(request):
 
         newData = {
             'HashNumber': keyHashFinal,
-            'title': str(request.POST['title']).lower(),
-            'imageUrl': request.POST['imageUpload'],
-            'article': request.POST['article'],
-            'author': request.POST['author']
+            'title': str(bodyRequest['title']).lower(),
+            'imageUrl': bodyRequest['imageUpload'],
+            'article': bodyRequest['article'],
+            'author': bodyRequest['author']
         }
 
         serializer = queueArticleSerialize(data=newData)
