@@ -1,6 +1,5 @@
-<h1 align="center">Stories Blog Udayana</h1>
-<p align="center"><img align="center" src="https://upload.wikimedia.org/wikipedia/id/2/2d/Logo-unud-baru.png"></p>
-Kumpulan artikel seputar Universitas Udayana.
+<p align="center"><img align="center" src="readme/mainLogo.png"></p>
+<p align="center"> Kumpulan artikel seputar Universitas Udayana. </p>
 
 
 ## Installation
