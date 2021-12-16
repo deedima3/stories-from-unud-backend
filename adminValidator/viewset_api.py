@@ -27,8 +27,12 @@ class antrianArticle:
     def convertToQueue(self):
         for data in self.datas:
             self.enqueue(data)
-        self.front = self.dataQueue[0]
-        self.rear = self.dataQueue[-1]
+        try:
+            self.front = self.dataQueue[0]
+            self.rear = self.dataQueue[-1]
+        except:
+            self.front = -1
+            self.rear = -1
         return self.getAllQueue()
 
     def first(self):

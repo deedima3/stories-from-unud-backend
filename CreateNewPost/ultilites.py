@@ -16,9 +16,9 @@ def cekLinearCollision(keyNumber):
     while True:
         cek = BlogMainDatabase.objects.filter(HashNumber=newIndex).exists()
         if (cek):
-            newIndex += 1  # Terjadi Collision maka index naik/di-increment 1
-        else:
             return newIndex  # Jika Error berarti key tersebut tersedia dan return key (integer)
+        else:
+            newIndex += 1  # Terjadi Collision maka index naik/di-increment 1
 
         if (newIndex == 300):
             newIndex = 0
