@@ -14,11 +14,11 @@ def hashfunction(word):
 def cekLinearCollision(keyNumber):
     newIndex = keyNumber
     while True:
-        try:
-            BlogMainDatabase.objects.get(HashNumber=newIndex)
-            newIndex += 1 # Terjadi Collision maka index naik/di-increment 1
-        except:
-            return newIndex # Jika Error berarti key tersebut tersedia dan return key (integer)
+        cek = BlogMainDatabase.objects.filter(HashNumber=newIndex).exists()
+        if (cek):
+            newIndex += 1  # Terjadi Collision maka index naik/di-increment 1
+        else:
+            return newIndex  # Jika Error berarti key tersebut tersedia dan return key (integer)
 
         if (newIndex == 300):
             newIndex = 0
@@ -29,16 +29,17 @@ def cekSearchLinearCollision(keyword):
     keyNumber = hashfunction(keyword)
     newIndex = keyNumber
     while True:
-        try:
+        cek = BlogMainDatabase.objects.filter(HashNumber=newIndex, acceptByAdmin=True).exists()
+        if (cek):
             data = BlogMainDatabase.objects.get(HashNumber=newIndex, acceptByAdmin=True)
-            if(data.title == keyword):
+            if (data.title == keyword):
                 return data
             else:
                 newIndex += 1  # Terjadi Collision maka index naik/di-increment 1
-        except:
-            return None # Jika Error berarti key tersebut tersedia dan return key (integer)
+        else:
+            return None  # Jika False maka ternyata data tidak ada
 
         if (newIndex == 300):
             newIndex = 0
         if (newIndex == keyNumber):
-            return "Sudah Penuh" # re
+            return "Tidak ada" # jika Linear kembali lagi ke index awal, berarti data tidak ada
