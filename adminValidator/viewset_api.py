@@ -108,6 +108,7 @@ def acceptArticle(request):
                 HashNumber=data.HashNumber,
                 title=data.title,
                 article=data.article,
+                imageUrl=data.imageUrl,
                 author=data.author,
                 visitor=data.visitor,
                 acceptByAdmin=True
