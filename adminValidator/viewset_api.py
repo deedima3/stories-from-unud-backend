@@ -102,7 +102,8 @@ def logout(request):
 def acceptArticle(request):
     if ('HashNumber' in request.POST):
         try:
-            data = queueArticle.objects.get(HashNumber=int(request.POST['HashNumber']))
+            bodyRequest = json.loads(request.body.decode('utf-8'))
+            data = queueArticle.objects.get(HashNumber=int(bodyRequest['HashNumber']))
             BlogMainDatabase.objects.create(
                 HashNumber=data.HashNumber,
                 title=data.title,
