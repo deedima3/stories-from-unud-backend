@@ -33,7 +33,7 @@ def cekSearchLinearCollision(keyword):
         cek = BlogMainDatabase.objects.filter(HashNumber=newIndex, acceptByAdmin=True).exists()
         if (cek):
             data = BlogMainDatabase.objects.get(HashNumber=newIndex, acceptByAdmin=True)
-            if (data.title == keyword):
+            if (data.title.lower() == keyword):
                 return data
             else:
                 newIndex += 1  # Terjadi Collision maka index naik/di-increment 1
