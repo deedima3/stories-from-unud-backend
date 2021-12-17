@@ -132,7 +132,7 @@ def PostBlogOneItem(request, format=None):
 def SearchArticle(request):
     if (str(request.method).lower() == 'get'):
         try:
-            keyword = str(request.GET['keyword']).lower().replace('+', ' ')
+            keyword = str(request.GET['keyword']).replace('+', ' ')
             print(keyword)
         except:
             return Response(status=status.HTTP_400_BAD_REQUEST)
