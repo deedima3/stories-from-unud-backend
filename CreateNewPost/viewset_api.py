@@ -25,7 +25,7 @@ def CreateNewSetView(request):
 
         newData = {
             'HashNumber': keyHashFinal,
-            'title': str(bodyRequest['title']).lower(),
+            'title': bodyRequest['title'],
             'imageUrl': bodyRequest['imageUpload'],
             'article': bodyRequest['article'],
             'author': bodyRequest['author']
