@@ -17,8 +17,6 @@ def cekLinearCollision(keyNumber, keyword):
         cek = queueArticle.objects.filter(HashNumber=newIndex).exists()
         if (cek):
             data = queueArticle.objects.get(HashNumber=newIndex)
-            if (data.title == keyword):
-                return "Data sudah ada"
             newIndex += 1  # Terjadi Collision maka index naik/di-increment 1
         else:
             return newIndex  # Jika False berarti key tersebut tersedia dan return key (integer)
