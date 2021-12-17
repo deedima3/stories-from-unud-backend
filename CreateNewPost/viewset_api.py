@@ -16,7 +16,7 @@ def CreateNewSetView(request):
 
         kataKunci = str(bodyRequest['title']).lower()
         keyHash = hashfunction(word=kataKunci)
-        hasil = cekLinearCollision(keyNumber=keyHash)
+        hasil = cekLinearCollision(keyNumber=keyHash, keyword=kataKunci)
 
         if (type(hasil) == int):
             keyHashFinal = hasil

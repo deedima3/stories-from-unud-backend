@@ -1,4 +1,4 @@
-from DATABASE.models import BlogMainDatabase
+from DATABASE.models import BlogMainDatabase, queueArticle
 
 # FUNGSI-FUNGSI SISTEM MENU
 
@@ -11,14 +11,17 @@ def hashfunction(word):
     return temp   # Return Integer
 
 # Collission
-def cekLinearCollision(keyNumber):
+def cekLinearCollision(keyNumber, keyword):
     newIndex = keyNumber
     while True:
-        cek = BlogMainDatabase.objects.filter(HashNumber=newIndex).exists()
+        cek = queueArticle.objects.filter(HashNumber=newIndex).exists()
         if (cek):
-            return newIndex  # Jika Error berarti key tersebut tersedia dan return key (integer)
-        else:
+            data = queueArticle.objects.get(HashNumber=newIndex)
+            if (data.title == keyword):
+                return "Data sudah ada"
             newIndex += 1  # Terjadi Collision maka index naik/di-increment 1
+        else:
+            return newIndex  # Jika False berarti key tersebut tersedia dan return key (integer)
 
         if (newIndex == 300):
             newIndex = 0
